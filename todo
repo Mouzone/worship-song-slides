@@ -1,0 +1,13 @@
+Overview
+========
+-[]grab audio
+-- constantly record
+-[]proccess language
+-- account for long notes + dialogue mid-song (pause button to press?)
+-[]index slides for switching
+-[]switch slide
+________________
+Grab Audio
+==========
+- find library
+- start and stop recording, but not application
