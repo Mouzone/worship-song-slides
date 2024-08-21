@@ -3,13 +3,14 @@ import speech_recognition as sr
 
 def init():
     r = sr.Recognizer()
-    r.adjust_for_ambient_noise(sr.Microphone)
+    with sr.Microphone() as source:
+        r.adjust_for_ambient_noise(source)
     return r
 
 
 def recordAudio(r):
-    # Adjust for ambient noise and record the audio
-    audio_data = r.record(sr.Microphone, duration=5)
+    with sr.Microphone() as source:
+        audio_data = r.listen(source, timeout=5, phrase_time_limit=5)
     return audio_data
 
 

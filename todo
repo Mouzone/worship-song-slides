@@ -1,6 +1,6 @@
 Overview
 ========
--[-] grab audio
+-[x] grab audio
 -[] parse audio
 -[] switch slides
 ________________
@@ -8,7 +8,6 @@ ________________
 Grab Audio
 ==========
 -[X] find library 				
--[] start and stop recording, but not application
 
 Parse Audio
 ===========
