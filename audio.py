@@ -34,12 +34,6 @@ def recordAudio():
     wf.writeframes(b"".join(frames))
     wf.close()
 
-
-def playAudio():
-    playsound("recording.wav")
-
-
 recordAudio()
-playAudio()
 
 # 2) parse audio into words
