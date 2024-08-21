@@ -1,10 +1,11 @@
 # 1) grab audio and play it back
 import pyaudio
 import wave
+from playsound import playsound
 
 
-def record_audio():
-    filename = "recorded.wav"
+def recordAudio():
+    filename = "recording.wav"
     chunk = 1024
     FORMAT = pyaudio.paInt16
     channels = 1
@@ -34,7 +35,11 @@ def record_audio():
     wf.close()
 
 
-record_audio()
+def playAudio():
+    playsound("recording.wav")
 
+
+recordAudio()
+playAudio()
 
 # 2) parse audio into words
