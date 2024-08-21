@@ -1,7 +1,8 @@
-# 1) grab audio and play it back
 import speech_recognition as sr
 
 r = sr.Recognizer()
+# rewrite to record with start and stop
+# while started, record for 5 second increments and parse
 with sr.Microphone() as source:
     print("Listening...")
     # Adjust for ambient noise and record the audio
@@ -17,6 +18,3 @@ with sr.Microphone() as source:
         print("Google Speech Recognition could not understand the audio")
     except sr.RequestError as e:
         print(f"Could not request results from Google Speech Recognition service; {e}")
-
-
-# 2) parse audio into words

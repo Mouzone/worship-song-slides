@@ -1,13 +1,23 @@
 Overview
 ========
--[]grab audio
--- constantly record
--[]proccess language
--- account for long notes + dialogue mid-song (pause button to press?)
--[]index slides for switching
--[]switch slide
+-[-] grab audio
+-[] parse audio
+-[] switch slides
 ________________
+
 Grab Audio
 ==========
-- find library
-- start and stop recording, but not application
+-[X] find library 				
+-[] start and stop recording, but not application
+
+Parse Audio
+===========
+-[] limit words to search to lyrics
+-[] tweak recording duration (average time for each verse)
+-[] tweak wait time (maybe put duration for each slide)
+-[]account for long notes + dialogue mid-song (pause button to press?)
+
+Slides
+======
+-[] get raw lyrics slides
+-[] index slides 
