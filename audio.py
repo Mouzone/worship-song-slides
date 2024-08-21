@@ -1,39 +1,22 @@
 # 1) grab audio and play it back
-import pyaudio
-import wave
-from playsound import playsound
+import speech_recognition as sr
 
+r = sr.Recognizer()
+with sr.Microphone() as source:
+    print("Listening...")
+    # Adjust for ambient noise and record the audio
+    r.adjust_for_ambient_noise(source)
+    audio_data = r.record(source, duration=5)
 
-def recordAudio():
-    filename = "recording.wav"
-    chunk = 1024
-    FORMAT = pyaudio.paInt16
-    channels = 1
-    sample_rate = 44100
-    record_seconds = 5
-    p = pyaudio.PyAudio()
-    stream = p.open(format=FORMAT,
-                    channels=channels,
-                    rate=sample_rate,
-                    input=True,
-                    output=True,
-                    frames_per_buffer=chunk)
-    frames = []
-    print("Recording...")
-    for i in range(int(sample_rate / chunk * record_seconds)):
-        data = stream.read(chunk)
-        frames.append(data)
-    print("Finished recording.")
-    stream.stop_stream()
-    stream.close()
-    p.terminate()
-    wf = wave.open(filename, "wb")
-    wf.setnchannels(channels)
-    wf.setsampwidth(p.get_sample_size(FORMAT))
-    wf.setframerate(sample_rate)
-    wf.writeframes(b"".join(frames))
-    wf.close()
+    print("Recognizing...")
+    try:
+        # Convert speech to text using Google's speech recognition API
+        text = r.recognize_google(audio_data)
+        print("You said: " + text)
+    except sr.UnknownValueError:
+        print("Google Speech Recognition could not understand the audio")
+    except sr.RequestError as e:
+        print(f"Could not request results from Google Speech Recognition service; {e}")
 
-recordAudio()
 
 # 2) parse audio into words
