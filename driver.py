@@ -1,22 +1,25 @@
+import speech_recognition as sr
 import audio
 import time
 
 
-def driver(r):
+def driver(r, source):
     print("-Listening...")
-    audio_data = audio.recordAudio(r)
+    audio_data = audio.recordAudio(r, source)
     print("-Parsing...")
     output = audio.parseAudio(r, audio_data)
     print(output)
 
 
 def main():
-    r = audio.init()
-    print("Running")
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Running")
 
-    while True:
-        driver(r)
-        time.sleep(20)
+        while True:
+            driver(r, source)
+            print("Waiting")
+            time.sleep(20)
 
 
 main()
