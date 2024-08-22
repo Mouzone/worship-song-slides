@@ -9,14 +9,23 @@ Grab Audio
 ==========
 -[X] find library 				
 
+Slides
+======
+-[] connect to Genius api
+-[] search for lyrics
+-[] take input
+-[] select best match based on title and artist with input by jaro distance
+-[] get raw lyrics slides
+-[] split based on sections
+-[] create and index slides to the lyrics
+
 Parse Audio
 ===========
 -[] limit words to search to lyrics
 -[] tweak recording duration (average time for each verse)
 -[] tweak wait time (maybe put duration for each slide)
--[]account for long notes + dialogue mid-song (pause button to press?)
+-[] account for long notes + dialogue mid-song (pause button to press?)
 
-Slides
-======
--[] get raw lyrics slides
--[] index slides 
+
+
+

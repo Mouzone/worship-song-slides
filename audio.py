@@ -9,7 +9,7 @@ def recordAudio(r, source):
 
 def parseAudio(r, audio_data):
     try:
-        # Convert speech to text using Google's speech recognition API
+        # todo: rewrite to instead of using api, search the song lyrics
         text = r.recognize_google(audio_data)
         return text
     except sr.UnknownValueError:
