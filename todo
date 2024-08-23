@@ -11,12 +11,10 @@ Grab Audio
 
 Slides
 ======
--[] connect to Genius api
--[] search for lyrics
--[] take input
--[] select best match based on title and artist with input by jaro distance
--[] get raw lyrics slides
--[] split based on sections
+-[X] connect to Genius api
+-[X] search for lyrics
+-[X] take input
+-[X] split based on sections
 -[] create and index slides to the lyrics
 
 Parse Audio
