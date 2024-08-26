@@ -12,16 +12,21 @@ def search(song_name, artist):
     genius.excluded_terms = ["(Remix)", "(Live)"]
 
     song = genius.search_song(song_name, artist)
+    
     return song.lyrics
 
 
 def cleanNewlines(lyrics):
+    # remove beginning text and ending text that is not part of the lyrics
     lyrics_no_header = lyrics.split("Lyrics")[1]
-
     lyrics_no_ending = re.sub(r'\d*Embed$', '', lyrics_no_header)
+
+    # standardize open brackets to be able to split with \n\n[
     lyrics_no_newlines = re.sub(r"\n\n", '', lyrics_no_ending)
     lyrics_no_newlines = re.sub(r"\n\[", '[', lyrics_no_newlines)
+
     lyrics_proper = re.sub(r"\[", "\n\n[", lyrics_no_newlines)
+
     return lyrics_proper
 
 
