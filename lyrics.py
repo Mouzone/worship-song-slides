@@ -46,8 +46,8 @@ def search(song_name, artist):
     genius.excluded_terms = ["(Remix)", "(Live)"]
 
     try:
-        lyrics = genius.search_song(song_name, artist)
-        lyrics_clean = cleanNewlines(lyrics)
+        song = genius.search_song(song_name, artist)
+        lyrics_clean = cleanNewlines(song.lyrics)
         return createLyricsDict(lyrics_clean)
     except HTTPError as e:
         raise RuntimeError(f"HTTP error occurred: {e}") from e
