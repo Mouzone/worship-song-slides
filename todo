@@ -15,7 +15,9 @@ Slides
 -[X] search for lyrics
 -[X] take input
 -[X] split based on sections
--[] create and index slides to the lyrics
+-[X] create and index slides to the lyrics
+-[] create slideshow/pdf/presentation
+-[] themes for slideshow to be used as background for every slide
 
 Parse Audio
 ===========
