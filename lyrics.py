@@ -5,17 +5,6 @@ import re
 import os
 
 
-def search(song_name, artist):
-    load_dotenv()
-    token = os.getenv('TOKEN')
-    genius = Genius(token)
-    genius.excluded_terms = ["(Remix)", "(Live)"]
-
-    song = genius.search_song(song_name, artist)
-    
-    return song.lyrics
-
-
 def cleanNewlines(lyrics):
     # remove beginning text and ending text that is not part of the lyrics
     lyrics_no_header = lyrics.split("Lyrics")[1]
@@ -31,11 +20,11 @@ def cleanNewlines(lyrics):
 
 
 def createLyricsDict(lyrics):
-    lyrics_list = lyrics.split("\n\n")
-    lyrics_list = lyrics_list[1:]
-
     lyrics_by_section = {}
     order = []
+
+    lyrics_list = lyrics.split("\n\n")
+    lyrics_list = lyrics_list[1:]
 
     for section in lyrics_list:
         header_end = section.find('\n')
@@ -50,21 +39,17 @@ def createLyricsDict(lyrics):
     return order, lyrics_by_section
 
 
-def main():
-    song_name = input("Enter song name: ")
-    artist = input("Enter artist name: ")
+def search(song_name, artist):
+    load_dotenv()
+    token = os.getenv('TOKEN')
+    genius = Genius(token)
+    genius.excluded_terms = ["(Remix)", "(Live)"]
+
     try:
-        lyrics = search(song_name, artist)
+        lyrics = genius.search_song(song_name, artist)
         lyrics_clean = cleanNewlines(lyrics)
-        order, lyrics_by_sections = createLyricsDict(lyrics_clean)
-        print(order)
-        print(lyrics_by_sections)
+        return createLyricsDict(lyrics_clean)
     except HTTPError as e:
-        print(e.errno)
-        print(e.args[0])
-        print(e.args[1])
+        raise RuntimeError(f"HTTP error occurred: {e}") from e
     except Timeout:
-        pass
-
-
-main()
+        raise TimeoutError("Request timed out")
