@@ -18,9 +18,11 @@ Slides
 -[X] create and index slides to the lyrics
 -[] create slideshow/pdf/presentation
 -[] themes for slideshow to be used as background for every slide
+-[] present slides with some kind of gui/visual
 
 Parse Audio
 ===========
+-[] refactor audio file with driver
 -[] limit words to search to lyrics
 -[] tweak recording duration (average time for each verse)
 -[] tweak wait time (maybe put duration for each slide)
